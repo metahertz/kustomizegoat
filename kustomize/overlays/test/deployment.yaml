@@ -5,18 +5,3 @@ metadata:
   namespace: kustomizegoat
 spec:
   replicas: 5
-  template:
-    metadata:
-      annotations:
-        seccomp.security.alpha.kubernetes.io/pod: "docker/default"
-    spec:
-      affinity:
-        podAntiAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: app
-                operator: In
-                values:
-                - kustomizegoat
-            topologyKey: "kubernetes.io/hostname"
